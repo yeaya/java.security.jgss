@@ -71,8 +71,8 @@ ReplayCache* ReplayCache::getInstance($String* type) {
 	if (type == nullptr) {
 		return $new($MemoryCache);
 	} else {
-		bool var$1 = type->equals("dfl"_s);
-		if (var$1 || type->startsWith("dfl:"_s)) {
+		bool var$1 = $nc(type)->equals("dfl"_s);
+		if (var$1 || $nc(type)->startsWith("dfl:"_s)) {
 			return $new($DflCache, type);
 		} else if (type->equals("none"_s)) {
 			return $new($ReplayCache$1);

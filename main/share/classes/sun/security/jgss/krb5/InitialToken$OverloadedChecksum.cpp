@@ -125,7 +125,7 @@ void InitialToken$OverloadedChecksum::init$($InitialToken* this$0, $Krb5Context*
 	if (!$nc(tgt)->isForwardable()) {
 		$nc(context)->setCredDelegState(false);
 		context->setDelegPolicyState(false);
-	} else if (context->getCredDelegState()) {
+	} else if ($nc(context)->getCredDelegState()) {
 		if (context->getDelegPolicyState()) {
 			if (!$nc(serviceTicket)->checkDelegate()) {
 				context->setDelegPolicyState(false);
@@ -138,7 +138,7 @@ void InitialToken$OverloadedChecksum::init$($InitialToken* this$0, $Krb5Context*
 			context->setDelegPolicyState(false);
 		}
 	}
-	if (context->getCredDelegState()) {
+	if ($nc(context)->getCredDelegState()) {
 		$var($KrbCred, krbCred, nullptr);
 		$var($CipherHelper, cipherHelper, context->getCipherHelper($($nc(serviceTicket)->getSessionKey())));
 		if (useNullKey(cipherHelper)) {
@@ -155,7 +155,7 @@ void InitialToken$OverloadedChecksum::init$($InitialToken* this$0, $Krb5Context*
 	$nc(this->checksumBytes)->set(pos++, $nc(this$0->CHECKSUM_FIRST_BYTES)->get(1));
 	$nc(this->checksumBytes)->set(pos++, $nc(this$0->CHECKSUM_FIRST_BYTES)->get(2));
 	$nc(this->checksumBytes)->set(pos++, $nc(this$0->CHECKSUM_FIRST_BYTES)->get(3));
-	$var($ChannelBinding, localBindings, context->getChannelBinding());
+	$var($ChannelBinding, localBindings, $nc(context)->getChannelBinding());
 	if (localBindings != nullptr) {
 		$var($bytes, localBindingsBytes, this$0->computeChannelBinding($(context->getChannelBinding())));
 		$System::arraycopy(localBindingsBytes, 0, this->checksumBytes, pos, $nc(localBindingsBytes)->length);
@@ -224,7 +224,7 @@ void InitialToken$OverloadedChecksum::init$($InitialToken* this$0, $Krb5Context*
 	if (($nc(this->checksumBytes)->get(0) != $nc(this$0->CHECKSUM_FIRST_BYTES)->get(0)) || ($nc(this->checksumBytes)->get(1) != $nc(this$0->CHECKSUM_FIRST_BYTES)->get(1)) || ($nc(this->checksumBytes)->get(2) != $nc(this$0->CHECKSUM_FIRST_BYTES)->get(2)) || ($nc(this->checksumBytes)->get(3) != $nc(this$0->CHECKSUM_FIRST_BYTES)->get(3))) {
 		$throwNew($GSSException, $GSSException::FAILURE, -1, "Incorrect checksum"_s);
 	}
-	$var($ChannelBinding, localBindings, context->getChannelBinding());
+	$var($ChannelBinding, localBindings, $nc(context)->getChannelBinding());
 	if (localBindings != nullptr) {
 		$var($bytes, remoteBindingBytes, $new($bytes, 16));
 		$System::arraycopy(this->checksumBytes, 4, remoteBindingBytes, 0, 16);
@@ -277,22 +277,22 @@ $Credentials* InitialToken$OverloadedChecksum::getDelegatedCreds() {
 
 void InitialToken$OverloadedChecksum::setContextFlags($Krb5Context* context) {
 	if (((int32_t)(this->flags & (uint32_t)1)) > 0) {
-		context->setCredDelegState(true);
+		$nc(context)->setCredDelegState(true);
 	}
 	if (((int32_t)(this->flags & (uint32_t)2)) == 0) {
-		context->setMutualAuthState(false);
+		$nc(context)->setMutualAuthState(false);
 	}
 	if (((int32_t)(this->flags & (uint32_t)4)) == 0) {
-		context->setReplayDetState(false);
+		$nc(context)->setReplayDetState(false);
 	}
 	if (((int32_t)(this->flags & (uint32_t)8)) == 0) {
-		context->setSequenceDetState(false);
+		$nc(context)->setSequenceDetState(false);
 	}
 	if (((int32_t)(this->flags & (uint32_t)16)) == 0) {
-		context->setConfState(false);
+		$nc(context)->setConfState(false);
 	}
 	if (((int32_t)(this->flags & (uint32_t)32)) == 0) {
-		context->setIntegState(false);
+		$nc(context)->setIntegState(false);
 	}
 }
 

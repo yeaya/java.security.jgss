@@ -130,7 +130,7 @@ void Ktab::main($StringArray* args) {
 		ktab->printHelp();
 		$System::exit(0);
 		return;
-	} else if ((args == nullptr) || (args->length == 0)) {
+	} else if ((args == nullptr) || ($nc(args)->length == 0)) {
 		ktab->action = u'l';
 	} else {
 		ktab->processArgs(args);

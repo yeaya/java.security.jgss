@@ -130,7 +130,7 @@ Krb5NameElement* Krb5NameElement::getInstance($String* gssNameStr, $Oid* gssName
 		$assign(gssNameType, $Krb5MechFactory::NT_GSS_KRB5_PRINCIPAL);
 	} else {
 		$init($GSSName);
-		bool var$5 = !gssNameType->equals($GSSName::NT_USER_NAME);
+		bool var$5 = !$nc(gssNameType)->equals($GSSName::NT_USER_NAME);
 		bool var$4 = var$5 && !gssNameType->equals($GSSName::NT_HOSTBASED_SERVICE);
 		$init($Krb5MechFactory);
 		bool var$3 = var$4 && !gssNameType->equals($Krb5MechFactory::NT_GSS_KRB5_PRINCIPAL);
@@ -141,9 +141,9 @@ Krb5NameElement* Krb5NameElement::getInstance($String* gssNameStr, $Oid* gssName
 	$var($PrincipalName, principalName, nullptr);
 	try {
 		$init($GSSName);
-		bool var$6 = gssNameType->equals($GSSName::NT_EXPORT_NAME);
+		bool var$6 = $nc(gssNameType)->equals($GSSName::NT_EXPORT_NAME);
 		$init($Krb5MechFactory);
-		if (var$6 || gssNameType->equals($Krb5MechFactory::NT_GSS_KRB5_PRINCIPAL)) {
+		if (var$6 || $nc(gssNameType)->equals($Krb5MechFactory::NT_GSS_KRB5_PRINCIPAL)) {
 			$assign(principalName, $new($PrincipalName, gssNameStr, $PrincipalName::KRB_NT_PRINCIPAL));
 		} else {
 			$var($StringArray, components, getComponents(gssNameStr));

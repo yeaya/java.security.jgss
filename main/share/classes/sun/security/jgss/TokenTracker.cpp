@@ -191,7 +191,7 @@ void TokenTracker::add(int32_t number, int32_t prevEntryPos) {
 		}
 		$assign(entry, $cast($TokenTracker$Entry, $nc(this->list)->remove(oldWindowStartIndex)));
 		this->windowStart = $nc(($cast($TokenTracker$Entry, $($nc(this->list)->get(this->windowStartIndex)))))->getStart();
-		entry->setStart(number);
+		$nc(entry)->setStart(number);
 		entry->setEnd(number);
 		if (prevEntryPos >= oldWindowStartIndex) {
 			--prevEntryPos;

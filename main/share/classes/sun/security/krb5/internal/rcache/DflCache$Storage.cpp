@@ -312,7 +312,7 @@ int32_t DflCache$Storage::loadAndCheck($Path* p, $AuthTimeWithHash* time, $Kerbe
 				} else if (time->sameTimeDiffHash($cast($AuthTimeWithHash, a))) {
 					seeNewButNotSame = true;
 				}
-			} else if (time->isSameIgnoresHash(a)) {
+			} else if ($nc(time)->isSameIgnoresHash(a)) {
 				if (!seeNewButNotSame) {
 					$throwNew($KrbApErrException, $Krb5::KRB_AP_ERR_REPEAT);
 				}

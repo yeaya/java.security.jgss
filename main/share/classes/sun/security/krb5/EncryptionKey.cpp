@@ -500,7 +500,7 @@ EncryptionKey* EncryptionKey::findKey(int32_t etype, $Integer* kvno, $Encryption
 				etypeFound = true;
 				if (versionMatches(kvno, kv)) {
 					return keys->get(i);
-				} else if (kv->intValue() > kvno_found) {
+				} else if ($nc(kv)->intValue() > kvno_found) {
 					$assign(key_found, keys->get(i));
 					kvno_found = kv->intValue();
 				}
@@ -515,7 +515,7 @@ EncryptionKey* EncryptionKey::findKey(int32_t etype, $Integer* kvno, $Encryption
 				etypeFound = true;
 				if (versionMatches(kvno, kv)) {
 					return $new(EncryptionKey, etype, $($nc(keys->get(i))->getBytes()));
-				} else if (kv->intValue() > kvno_found) {
+				} else if ($nc(kv)->intValue() > kvno_found) {
 					$assign(key_found, $new(EncryptionKey, etype, $($nc(keys->get(i))->getBytes())));
 					kvno_found = kv->intValue();
 				}

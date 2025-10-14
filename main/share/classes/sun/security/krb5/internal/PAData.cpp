@@ -364,7 +364,7 @@ $String* PAData::toString() {
 						$var($bytes, s2kparams, info2->getParams());
 						if (s2kparams == nullptr) {
 							sb->append("null\n"_s);
-						} else if (s2kparams->length == 0) {
+						} else if ($nc(s2kparams)->length == 0) {
 							sb->append("empty\n"_s);
 						} else {
 							sb->append($($$new($HexDumpEncoder)->encodeBuffer(s2kparams)));
