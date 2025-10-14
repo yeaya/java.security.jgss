@@ -1,0 +1,56 @@
+#ifndef _sun_security_krb5_internal_TGSRep_h_
+#define _sun_security_krb5_internal_TGSRep_h_
+//$ class sun.security.krb5.internal.TGSRep
+//$ extends sun.security.krb5.internal.KDCRep
+
+#include <java/lang/Array.h>
+#include <sun/security/krb5/internal/KDCRep.h>
+
+namespace sun {
+	namespace security {
+		namespace krb5 {
+			class EncryptedData;
+			class PrincipalName;
+		}
+	}
+}
+namespace sun {
+	namespace security {
+		namespace krb5 {
+			namespace internal {
+				class PAData;
+				class Ticket;
+			}
+		}
+	}
+}
+namespace sun {
+	namespace security {
+		namespace util {
+			class DerValue;
+		}
+	}
+}
+
+namespace sun {
+	namespace security {
+		namespace krb5 {
+			namespace internal {
+
+class $import TGSRep : public ::sun::security::krb5::internal::KDCRep {
+	$class(TGSRep, $NO_CLASS_INIT, ::sun::security::krb5::internal::KDCRep)
+public:
+	TGSRep();
+	using ::sun::security::krb5::internal::KDCRep::init;
+	void init$($Array<::sun::security::krb5::internal::PAData>* new_pAData, ::sun::security::krb5::PrincipalName* new_cname, ::sun::security::krb5::internal::Ticket* new_ticket, ::sun::security::krb5::EncryptedData* new_encPart);
+	void init$($bytes* data);
+	void init$(::sun::security::util::DerValue* encoding);
+	void init(::sun::security::util::DerValue* encoding);
+};
+
+			} // internal
+		} // krb5
+	} // security
+} // sun
+
+#endif // _sun_security_krb5_internal_TGSRep_h_

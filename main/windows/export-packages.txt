@@ -1,0 +1,11 @@
+javax.security.auth.kerberos
+org.ietf.jgss
+sun.security.jgss
+sun.security.jgss.krb5
+sun.security.jgss.krb5.internal
+sun.security.jgss.spi
+sun.security.krb5
+sun.security.krb5.internal
+sun.security.krb5.internal.ktab
+sun.security.krb5.internal.tools
+sun.security.krb5.internal.util
