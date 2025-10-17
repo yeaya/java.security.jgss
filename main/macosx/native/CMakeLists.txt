@@ -1,5 +1,9 @@
 #machine generated
 
+if(JCPP_OS MATCHES "macosx")
+	add_definitions("-DSTATIC_BUILD")
+endif()
+
 include_directories("../../share/native")
 
 aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}" macosx-native_SRCS)

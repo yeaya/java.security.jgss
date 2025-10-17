@@ -1,6 +1,10 @@
 #machine generated
 
 if(JCPP_OS MATCHES "macosx")
+	add_definitions("-DSTATIC_BUILD")
+endif()
+
+if(JCPP_OS MATCHES "macosx")
 	include_directories("../../macosx/native")
 endif()
 

@@ -108,6 +108,12 @@ elseif(JCPP_OS MATCHES "macosx")
 	SET_TARGET_PROPERTIES(${JCPP_PROJECT_NAME}_shared PROPERTIES INSTALL_RPATH ".;../lib")
 endif()
 
+	if(JCPP_OS MATCHES "macosx")
+		set(JCPP_EXT_LIBS ${JCPP_EXT_LIBS}
+			-framework Cocoa -framework SystemConfiguration -framework Kerberos
+		)
+	endif()
+
 	target_link_libraries(${JCPP_PROJECT_NAME}_shared
 		PUBLIC ${JCPP_DEPENDENCY_LIBS}
 		PRIVATE ${JCPP_EXT_LIBS}
